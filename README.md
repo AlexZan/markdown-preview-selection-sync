@@ -1,61 +1,69 @@
 # Markdown Preview Selection Sync
 
-VS Code extension that synchronizes text selection from Markdown preview to the source editor.
+**Automatically sync text selection from Markdown preview to your source editor.**
 
-## What It Does
+## Why Use This?
 
-When you select text in the Markdown preview, this extension automatically selects the corresponding lines in the source markdown file.
+When working with AI assistants like Claude Code, Copilot, or other tools that read your editor selection, you often want to reference specific content from your markdown preview. This extension bridges that gap by automatically selecting the corresponding source lines when you select text in the preview.
 
-**Why?** Makes it easier to reference specific markdown content when working with AI assistants like Claude Code, which can see editor selections but not preview selections.
+## Features
+
+- ✨ **Automatic Selection Sync**: Select text in the preview, see it selected in the source
+- 🎯 **Block-Level Precision**: Selects the corresponding lines in your markdown source
+- 🚀 **Zero Configuration**: Works out of the box with VS Code's markdown preview
+- 🔄 **Multi-File Support**: Handles multiple markdown files and preview tabs
+- ⚡ **Lightweight**: Minimal performance impact, no external dependencies
 
 ## How It Works
 
-1. You select text in the rendered Markdown preview
-2. Extension detects the selection
-3. Extension finds the corresponding source lines using `data-line` attributes
-4. Extension updates the editor selection to match
-5. Editor scrolls to show the selected lines
+1. Open a markdown file and its preview:
+   - **Side-by-side**: Ctrl+K V or Cmd+K V (preview opens in split editor)
+   - **Separate tab**: Alt+Click on preview icon (preview opens in new tab)
+2. Select any text in the preview by clicking and dragging
+3. Release the mouse button
+4. The extension automatically selects the corresponding lines in your source editor
+5. Your cursor moves to the source editor with the selection highlighted
 
-## Architecture
+**Works with both preview modes:**
+- ✅ Side-by-side preview (split editor group)
+- ✅ Separate tab preview (dedicated preview tab)
 
-- **Preview Script:** Detects selections in the preview webview
-- **URI Handler:** Communicates line ranges from preview to extension
-- **Selection Update:** Updates editor selection based on line range
+## Use Cases
 
-Uses standard VS Code IPC mechanism (URI handlers) to communicate across the security boundary between preview webview and extension host.
+- **AI Assistants**: Quickly reference preview content when chatting with Claude, Copilot, or other AI tools
+- **Content Review**: Easily jump to source lines while reviewing rendered content
+- **Documentation**: Navigate between preview and source while editing docs
+- **Collaboration**: Point team members to specific content during reviews
 
-## Development Status
+## Installation
 
-**Current:** Initial scaffold created, extension code complete, preview script needs implementation.
+### From VS Code Marketplace
 
-See [DEV_INSTRUCTIONS.md](DEV_INSTRUCTIONS.md) for complete implementation guide.
+1. Open VS Code
+2. Go to Extensions (Ctrl+Shift+X or Cmd+Shift+X)
+3. Search for "Markdown Preview Selection Sync"
+4. Click Install
 
-## Installation (When Complete)
+## Extension Settings
 
-1. Clone repository
-2. Run `npm install`
-3. Run `npm run compile`
-4. Press F5 to launch extension in development mode
-5. Test with markdown files and preview
+This extension currently has no configurable settings. It works automatically when you open markdown files.
 
-## Usage
 
-1. Open a markdown file
-2. Open preview side-by-side (Ctrl+K V or Cmd+K V)
-3. Select text in the preview
-4. Watch the editor selection update automatically
+## Contributing
 
-## Technical Details
-
-- Uses `markdown.previewScripts` to inject selection detection
-- Uses `data-line` attributes (already present in VS Code's markdown preview)
-- Communicates via `vscode://` URI scheme
-- Updates selection using VS Code Extension API
+Contributions are welcome! Please see the [Development Instructions](https://github.com/AlexZan/markdown-preview-selection-sync/blob/master/DEV_INSTRUCTIONS.md) for setup and development workflow.
 
 ## License
 
-MIT
+MIT - See [LICENSE](LICENSE) file for details
 
 ## Author
 
-Alexander Zanfir
+**Alexander Zanfir**
+
+- GitHub: [@AlexZan](https://github.com/AlexZan)
+
+
+---
+
+**Enjoy using Markdown Preview Selection Sync!** If you find it useful, please leave a rating on the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=alexzanfir.markdown-preview-selection-sync).

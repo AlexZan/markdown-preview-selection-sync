@@ -1,9 +1,31 @@
 {
   "name": "markdown-preview-selection-sync",
   "displayName": "Markdown Preview Selection Sync",
-  "description": "Synchronizes text selection from Markdown preview to source editor",
+  "description": "Synchronizes text selection from Markdown preview to source editor - perfect for AI assistants",
   "version": "0.1.0",
   "publisher": "alexzanfir",
+  "author": {
+    "name": "Alexander Zanfir"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexZan/markdown-preview-selection-sync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlexZan/markdown-preview-selection-sync/issues"
+  },
+  "homepage": "https://github.com/AlexZan/markdown-preview-selection-sync#readme",
+  "keywords": [
+    "markdown",
+    "preview",
+    "selection",
+    "sync",
+    "claude",
+    "ai",
+    "assistant"
+  ],
   "engines": {
     "vscode": "^1.85.0"
   },
