@@ -1,0 +1,37 @@
+{
+  "name": "markdown-preview-selection-sync",
+  "displayName": "Markdown Preview Selection Sync",
+  "description": "Synchronizes text selection from Markdown preview to source editor",
+  "version": "0.1.0",
+  "publisher": "alexzanfir",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "markdown.previewScripts": [
+      "./media/preview-selection.js"
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.x",
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "eslint": "^8.x",
+    "typescript": "^5.3.0"
+  }
+}
