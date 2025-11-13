@@ -39,7 +39,28 @@
   "contributes": {
     "markdown.previewScripts": [
       "./media/preview-selection.js"
-    ]
+    ],
+    "configuration": {
+      "title": "Markdown Preview Selection Sync",
+      "properties": {
+        "markdownPreviewSelectionSync.requireModifierKey": {
+          "type": "boolean",
+          "default": false,
+          "description": "Require holding a modifier key (Ctrl/Cmd) while selecting text to trigger sync. When enabled, normal text selection works without syncing."
+        },
+        "markdownPreviewSelectionSync.modifierKey": {
+          "type": "string",
+          "enum": ["ctrl", "alt", "meta"],
+          "default": "ctrl",
+          "description": "Which modifier key to use when requireModifierKey is enabled. 'meta' is Cmd on Mac, Windows key on Windows/Linux."
+        },
+        "markdownPreviewSelectionSync.maxSearchLines": {
+          "type": "number",
+          "default": 50,
+          "description": "Maximum number of lines to search when finding multi-line selections."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

@@ -1,5 +1,36 @@
 (function () {
     try {
+        // Configuration
+        // NOTE: Due to markdown preview script isolation, config must be set here manually
+        // VS Code settings are defined in package.json but can't be automatically injected
+        // TODO: Implement config injection via custom markdown-it plugin or message passing
+        const config = {
+            requireModifierKey: true, // Set to false to sync without modifier key
+            modifierKey: 'ctrl' // Options: 'ctrl', 'alt', 'meta' (Cmd on Mac)
+        };
+
+        /**
+         * Checks if the required modifier key is pressed.
+         */
+        class ModifierKeyChecker {
+            static isModifierPressed(event) {
+                if (!config.requireModifierKey) {
+                    return true; // No modifier required
+                }
+
+                switch (config.modifierKey) {
+                    case 'ctrl':
+                        return event.ctrlKey;
+                    case 'alt':
+                        return event.altKey;
+                    case 'meta':
+                        return event.metaKey; // Cmd on Mac, Windows key on Windows/Linux
+                    default:
+                        return false;
+                }
+            }
+        }
+
         /**
          * Traverses DOM tree to find line numbers from data-line attributes.
          */
@@ -68,7 +99,12 @@
         /**
          * Main handler for mouseup events.
          */
-        function handleMouseUp() {
+        function handleMouseUp(event) {
+            // Check if modifier key requirement is met
+            if (!ModifierKeyChecker.isModifierPressed(event)) {
+                return; // Modifier key not pressed, don't sync
+            }
+
             const selectionData = SelectionAnalyzer.analyze();
             if (selectionData) {
                 SelectionSyncTrigger.trigger(selectionData);
