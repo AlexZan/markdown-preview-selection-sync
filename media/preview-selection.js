@@ -1,13 +1,25 @@
 (function () {
     try {
         // Configuration
-        // NOTE: Due to markdown preview script isolation, config must be set here manually
-        // VS Code settings are defined in package.json but can't be automatically injected
-        // TODO: Implement config injection via custom markdown-it plugin or message passing
-        const config = {
-            requireModifierKey: true, // Set to false to sync without modifier key
-            modifierKey: 'ctrl' // Options: 'ctrl', 'alt', 'meta' (Cmd on Mac)
+        // Read from data attribute (CSP-safe injection method)
+        let config = {
+            requireModifierKey: true, // Default: require modifier key
+            modifierKey: 'ctrl', // Default: use Ctrl key
+            maxSearchLines: 50 // Default: search up to 50 lines
         };
+
+        // Try to read from body or container data attribute
+        const bodyConfig = document.body?.getAttribute('data-markdown-preview-config');
+        const containerConfig = document.querySelector('[data-markdown-preview-config]')?.getAttribute('data-markdown-preview-config');
+
+        const configJson = bodyConfig || containerConfig;
+        if (configJson) {
+            try {
+                config = JSON.parse(configJson);
+            } catch (e) {
+                console.error('[Preview Script] Failed to parse config:', e);
+            }
+        }
 
         /**
          * Checks if the required modifier key is pressed.

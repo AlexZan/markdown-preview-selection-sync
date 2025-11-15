@@ -3,6 +3,7 @@ import { SelectionRequestParser } from './selection-request-parser';
 import { MarkdownEditorResolver } from './editor-resolver';
 import { ConfigurationManager } from './configuration';
 import { SelectionStrategyFactory } from './selection-strategy-factory';
+import { extendMarkdownIt } from './markdown-it-config-plugin';
 
 export function activate(context: vscode.ExtensionContext) {
     const editorResolver = new MarkdownEditorResolver();
@@ -49,6 +50,9 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(uriHandler);
+
+    // Return markdown-it plugin for config injection
+    return { extendMarkdownIt };
 }
 
 export function deactivate() {}

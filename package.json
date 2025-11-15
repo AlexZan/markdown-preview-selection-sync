@@ -40,6 +40,7 @@
     "markdown.previewScripts": [
       "./media/preview-selection.js"
     ],
+    "markdown.markdownItPlugins": true,
     "configuration": {
       "title": "Markdown Preview Selection Sync",
       "properties": {
