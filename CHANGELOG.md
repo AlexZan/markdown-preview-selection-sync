@@ -2,6 +2,30 @@
 
 All notable changes to the "Markdown Preview Selection Sync" extension will be documented in this file.
 
+## [1.0.0] - 2025-11-16
+
+### Added
+- **Configuration Options**: Three new configurable settings
+  - `requireModifierKey`: Optionally require holding a modifier key to trigger sync
+  - `modifierKey`: Choose which key (Ctrl/Alt/Meta) when modifier is required
+  - `maxSearchLines`: Configure search range for multi-line selections
+- **Character-Level Precision**: Fuzzy text-based search for accurate selection within paragraphs (fixes #1)
+- **Modifier Key Support**: Enable Ctrl+Click (or Alt/Cmd+Click) to activate selection sync (fixes #2)
+- **Automatic Config Injection**: Settings automatically sync to preview via markdown-it plugin
+- **Comprehensive Test Infrastructure**: Added unit tests for all selection strategies
+- **Enhanced Architecture**: Refactored into modular, testable components
+
+### Fixed
+- **Separate Preview Mode Bug**: Selection sync now works reliably in separate tab mode (fixes #3)
+  - Implemented sessionStorage caching for config persistence across webview reloads
+  - Fixed config loss when VS Code destroys/recreates preview webviews
+- **Multi-Line Selection**: Improved selection precision within paragraph blocks
+- **Editor Tracking**: Better handling of undefined editors during tab switching
+
+### Changed
+- **Selection Strategy**: Now uses multiple strategies (line-based → text-based fallback) for better accuracy
+- **Preview Focus**: Uses `preserveFocus: true` to reduce unnecessary preview reloads
+
 ## [0.1.0] - 2025-01-12
 
 ### Added
@@ -16,10 +40,6 @@ All notable changes to the "Markdown Preview Selection Sync" extension will be d
 - Preview loading issues by removing unnecessary `acquireVsCodeApi()` call
 - Multi-file support through `lastMarkdownEditor` tracking
 - Selection event triggering for compatibility with AI assistants (Claude Code, etc.)
-
-### Known Issues
-- Block-level granularity only (selecting text within a paragraph selects the entire paragraph) - See [Issue #1](https://github.com/AlexZan/markdown-preview-selection-sync/issues/1)
-- Markdown files only (no support for other preview types)
 
 ---
 

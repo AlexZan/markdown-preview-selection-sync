@@ -46,7 +46,22 @@ When working with AI assistants like Claude Code, Copilot, or other tools that r
 
 ## Extension Settings
 
-This extension currently has no configurable settings. It works automatically when you open markdown files.
+This extension contributes the following settings:
+
+- `markdownPreviewSelectionSync.requireModifierKey`: Require holding a modifier key (Ctrl/Cmd/Alt) while selecting text to trigger sync. When enabled, normal text selection works without syncing. (Default: `false`)
+- `markdownPreviewSelectionSync.modifierKey`: Which modifier key to use when `requireModifierKey` is enabled. Options: `ctrl`, `alt`, `meta` (Cmd on Mac, Windows key on Windows/Linux). (Default: `ctrl`)
+- `markdownPreviewSelectionSync.maxSearchLines`: Maximum number of lines to search when finding multi-line selections. (Default: `50`)
+
+**Example: Enable Ctrl+Click activation**
+
+To prevent accidental selection syncing and only trigger when holding Ctrl:
+
+1. Open VS Code Settings (Ctrl+, or Cmd+,)
+2. Search for "Markdown Preview Selection Sync"
+3. Enable "Require Modifier Key"
+4. Select your preferred modifier key (Ctrl, Alt, or Meta)
+
+Now selections will only sync when you hold the modifier key while selecting text in the preview.
 
 
 ## Contributing

@@ -2,7 +2,7 @@
   "name": "markdown-preview-selection-sync",
   "displayName": "Markdown Preview Selection Sync",
   "description": "Synchronizes text selection from Markdown preview to source editor - perfect for AI assistants",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "alexzanfir",
   "author": {
     "name": "Alexander Zanfir"
