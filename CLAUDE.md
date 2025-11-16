@@ -32,3 +32,18 @@
 - Always wait for explicit user confirmation before cleaning up debug code
 - If you make a fix, report what you did and ask the user to test it
 - Only after user says "it works" or "problem solved" can you proceed with cleanup
+
+## Git Commit Messages
+
+**CRITICAL**: Always link commits to GitHub issues when fixing bugs or implementing features.
+
+**Rules:**
+- When closing an issue, include "Fixes #N" or "Closes #N" in commit message
+- When referencing an issue, include "Related to #N" or "See #N"
+- Use GitHub's special keywords to auto-close issues: fixes, closes, resolves
+- Place issue references in the first line or in the body of the commit message
+
+**Examples:**
+- ✅ GOOD: "Fix config loss in separate preview mode (fixes #3)"
+- ✅ GOOD: "Add modifier key feature (closes #2)"
+- ❌ BAD: "Fix config loss in separate preview mode" (no issue reference)
