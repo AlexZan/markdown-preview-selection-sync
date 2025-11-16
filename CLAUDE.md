@@ -21,3 +21,14 @@
 **Examples:**
 - ❌ BAD: Show 50+ lines of refactored code in response
 - ✅ GOOD: "Extracted selection logic to [selection-strategies.ts](src/selection-strategies.ts)"
+
+## Problem Resolution
+
+**CRITICAL**: You are NOT allowed to say a problem is resolved until the user confirms it is resolved.
+
+**Rules:**
+- Never remove debug logging or assume a fix works without user testing
+- Never claim "the issue is fixed" or "ready to commit" without user verification
+- Always wait for explicit user confirmation before cleaning up debug code
+- If you make a fix, report what you did and ask the user to test it
+- Only after user says "it works" or "problem solved" can you proceed with cleanup
