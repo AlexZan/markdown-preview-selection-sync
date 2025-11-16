@@ -2,6 +2,12 @@
 
 All notable changes to the "Markdown Preview Selection Sync" extension will be documented in this file.
 
+## [1.0.1] - 2025-11-16
+
+### Fixed
+- Package validation: Removed accidentally created `nul` file from package
+- Added `nul` to `.gitignore` to prevent future occurrences
+
 ## [1.0.0] - 2025-11-16
 
 ### Added
